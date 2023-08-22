@@ -36,8 +36,8 @@ app.get("/api/v1/books", async (req, res) => {
     const totalItems = await BookModel.countDocuments(query);
     return res.status(200).json({
       msg: "Ok",
-      data,
       totalItems,
+      data,
     });
   } catch (error) {
     return res.status(500).json({
@@ -70,17 +70,24 @@ app.get("/api/v1/books/:id", async (req, res) => {
 app.post("/api/v1/books", async (req, res) => {
   try {
     const { name, author, price, description } = req.body;
-    const book = new BookModel({
-      name,
-      author,
-      price,
-      description,
-    });
-    const data = await book.save();
-    return res.status(200).json({
-      msg: "Ok",
-      data,
-    });
+    if (name && author && price && description) {
+      const book = new BookModel({
+        name,
+        author,
+        price,
+        description,
+      });
+      // console.log(req.body);
+      const data = await book.save();
+      return res.status(200).json({
+        msg: "Ok!!!",
+        data,
+      });
+    } else {
+      return res.status(200).json({
+        msg: "POST INCOMPLETO",
+      });
+    }
   } catch (error) {
     return res.status(500).json({
       msg: error.message,
