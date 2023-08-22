@@ -13,7 +13,9 @@ connectDB();
 const BookModel = require("./models/book.model");
 
 app.get("/", async (req, res) => {
-  return res.status(200).json({ msj: "OK!!!" });
+  setTimeout(() => {
+    return res.status(200).json({ msj: "OK!!!" });
+  }, 6000);
 });
 
 app.get("/api/v1/books", async (req, res) => {
