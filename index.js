@@ -12,6 +12,10 @@ connectDB();
 
 const BookModel = require("./models/book.model");
 
+app.get("/", async (req, res) => {
+  return res.status(200).json({ msj: "OK!!!" });
+});
+
 app.get("/api/v1/books", async (req, res) => {
   const { limit = 5, orderBy = "name", sortBy = "asc", keyword } = req.query;
   let page = +req.query?.page;
