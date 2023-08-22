@@ -31,7 +31,7 @@ app.get("/api/v1/books", async (req, res) => {
   try {
     const data = await BookModel.find(query)
       .skip(skip)
-      .limit(limit)
+      // .limit(limit)
       .sort({ [orderBy]: sortBy });
     const totalItems = await BookModel.countDocuments(query);
     return res.status(200).json({
