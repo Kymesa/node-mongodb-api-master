@@ -69,13 +69,13 @@ app.get("/api/v1/books/:id", async (req, res) => {
 
 app.post("/api/v1/books", async (req, res) => {
   try {
-    const { name, author, price, description } = req.body;
-    if (name && author && price && description) {
+    const { name, provider, category, price } = req.body;
+    if (name && provider && category && price) {
       const book = new BookModel({
         name,
-        author,
+        provider,
+        category,
         price,
-        description,
       });
       // console.log(req.body);
       const data = await book.save();
@@ -97,16 +97,16 @@ app.post("/api/v1/books", async (req, res) => {
 
 app.put("/api/v1/books/:id", async (req, res) => {
   try {
-    const { name, author, price, description } = req.body;
+    const { name, provider, category, price } = req.body;
     const { id } = req.params;
 
     const data = await BookModel.findByIdAndUpdate(
       id,
       {
         name,
-        author,
+        provider,
+        category,
         price,
-        description,
       },
       { new: true }
     );

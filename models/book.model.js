@@ -7,16 +7,16 @@ const bookSchema = new Schema(
       type: String,
       require: true,
     },
-    author: {
+    provider: {
+      type: String,
+      require: true,
+    },
+    category: {
       type: String,
       require: true,
     },
     price: {
       type: Number,
-      require: true,
-    },
-    description: {
-      type: String,
       require: true,
     },
   },
