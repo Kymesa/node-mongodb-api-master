@@ -85,7 +85,7 @@ app.post("/api/v1/books", async (req, res) => {
       });
     } else {
       return res.status(200).json({
-        msg: "POST INCOMPLETO",
+        msg: "INFORMACION INCORRECTA",
       });
     }
   } catch (error) {
