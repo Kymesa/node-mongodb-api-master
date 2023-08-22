@@ -30,13 +30,13 @@ app.get("/api/v1/books", async (req, res) => {
       .limit(limit)
       .sort({ [orderBy]: sortBy });
     const totalItems = await BookModel.countDocuments(query);
-    return res.status(200).json({
+    return json({
       msg: "Ok",
       data,
       totalItems,
     });
   } catch (error) {
-    return res.status(500).json({
+    return json({
       msg: error.message,
     });
   }
@@ -47,17 +47,17 @@ app.get("/api/v1/books/:id", async (req, res) => {
     const data = await BookModel.findById(req.params.id);
 
     if (data) {
-      return res.status(200).json({
+      return json({
         msg: "Ok",
         data,
       });
     }
 
-    return res.status(404).json({
+    return json({
       msg: "Not Found",
     });
   } catch (error) {
-    return res.status(500).json({
+    return json({
       msg: error.message,
     });
   }
@@ -73,12 +73,12 @@ app.post("/api/v1/books", async (req, res) => {
       description,
     });
     const data = await book.save();
-    return res.status(200).json({
+    return json({
       msg: "Ok",
       data,
     });
   } catch (error) {
-    return res.status(500).json({
+    return json({
       msg: error.message,
     });
   }
@@ -100,12 +100,12 @@ app.put("/api/v1/books/:id", async (req, res) => {
       { new: true }
     );
 
-    return res.status(200).json({
+    return json({
       msg: "Ok",
       data,
     });
   } catch (error) {
-    return res.status(500).json({
+    return json({
       msg: error.message,
     });
   }
@@ -114,11 +114,11 @@ app.put("/api/v1/books/:id", async (req, res) => {
 app.delete("/api/v1/books/:id", async (req, res) => {
   try {
     await BookModel.findByIdAndDelete(req.params.id);
-    return res.status(200).json({
+    return json({
       msg: "Ok",
     });
   } catch (error) {
-    return res.status(500).json({
+    return json({
       msg: error.message,
     });
   }
