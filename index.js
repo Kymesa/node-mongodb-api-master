@@ -1,9 +1,14 @@
 const express = require("express");
-
+const cors = require("cors");
 const app = express();
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 require("dotenv").config();
-
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const connectDB = require("./connectMongo");
