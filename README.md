@@ -1,7 +1,7 @@
-# node-mongodb-api-master
+# PRODUCTS :) MONGODB + NODEJS + EXPRESS 
 # GET    /posts
 # GET    /posts/:id
 # POST   /posts
 # PUT    /posts/:id
 # DELETE /posts/:id
-# PRODUCTS :) MONGODB + NODEJS + EXPRESS 
+
